@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Grommet } from "grommet";
+import { grommet } from "grommet/themes";
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import { Box } from "./components/Animated";
+import App from "./components/App";
+import ErrorBoundary from "./components/ErrorBoundary";
+import "./style.scss";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const Root = () => (
+  <StrictMode>
+    <ErrorBoundary>
+      <Grommet theme={grommet}>
+        <Box
+          whileHover={{
+            y: 100,
+            transition: { duration: 0.3 },
+          }}
+          drag
+          dragConstraints={{ left: 0, right: 300 }}
+          dragElastic={0.2}
+        >
+          Box
+          <App>Children.{console.log(Box)}</App>
+        </Box>
+      </Grommet>
+    </ErrorBoundary>
+  </StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Root />, document.getElementById("root"));
