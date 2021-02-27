@@ -1,6 +1,6 @@
 function sum(a: number, b: number): number {
-  a ?? 1;
-  b ?? 2;
+  a = a ?? 1;
+  b = b ?? 2;
   return a + b;
 }
 

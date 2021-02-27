@@ -88,12 +88,13 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "test": "node scripts/test.js",
     "build": "node scripts/build.js",
-    "commit": "yarn format && yarn test && cz",
-    "format": "pretty-quick \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --staged",
-    "format:all": "prettier --write .",
+    "commit": "yarn format:staged && yarn test && cz",
     "cz": "yarn commit",
+    "format:staged": "pretty-quick \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --staged",
+    "format:all": "prettier --write .",
+    "test": "node scripts/test.js",
+    "test:y": "yarn updateSnapshots",
     "updateSnapshots": "jest --updateSnapshot"
   },
   "eslintConfig": {
@@ -174,6 +175,7 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",

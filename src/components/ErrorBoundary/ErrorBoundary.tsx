@@ -14,7 +14,7 @@ class ErrorBoundary extends Component<
     this.state = { hasError: false };
   }
 
-  getDerivedStateFromError(): IErrorBoundaryState {
+  static getDerivedStateFromError(): IErrorBoundaryState {
     return { hasError: true };
   }
 

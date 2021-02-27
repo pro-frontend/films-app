@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ErrorBoundary /> should mount 1`] = `undefined`;
+exports[`<ErrorBoundary /> should mount 1`] = `
+<ErrorBoundary>
+  <h2>
+    Correct component
+  </h2>
+</ErrorBoundary>
+`;
 
-exports[`<ErrorBoundary /> should mount 2`] = `undefined`;
+exports[`<ErrorBoundary /> should mount 2`] = `
+<ErrorBoundary>
+  <DefaultTemplate>
+    <h2>
+      Something went wrong!
+    </h2>
+  </DefaultTemplate>
+</ErrorBoundary>
+`;
