@@ -3,7 +3,7 @@ import { grommet } from "grommet/themes";
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { Box } from "./components/Animated";
-import App from "./components/App";
+import AppRoot from "./components/AppRoot";
 import ErrorBoundary from "./components/ErrorBoundary";
 import "./style.scss";
 
@@ -21,10 +21,11 @@ const Root = () => (
           dragElastic={0.2}
         >
           Box
-          <App>Children.{console.log(Box)}</App>
+          <AppRoot>Children.{console.log(Box)}</AppRoot>
         </Box>
       </Grommet>
     </ErrorBoundary>
   </StrictMode>
 );
+
 ReactDOM.render(<Root />, document.getElementById("root"));
