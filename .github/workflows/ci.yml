@@ -20,4 +20,4 @@ jobs:
       - name: run CI
         run: |
           yarn install
-          yarn test
+          jest
