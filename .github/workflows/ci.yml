@@ -7,5 +7,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install modules
       run: yarn
+    - name: Testing Shared Utils
+      if: always()
+      run: yarn jest **/*.test.*
     - name: Run tests✅
       run: yarn test
