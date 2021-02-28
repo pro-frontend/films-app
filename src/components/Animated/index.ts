@@ -1,1 +1,1 @@
-export { Box } from "./Motion";
+export { Paper } from "./Motion";

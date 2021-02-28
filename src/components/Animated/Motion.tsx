@@ -1,6 +1,6 @@
+import Paper from "@material-ui/core/Paper";
 import { motion } from "framer-motion";
-import { Box } from "grommet";
 
-const MotionBox = motion(Box);
+const MotionPaper = motion(Paper);
 
-export { MotionBox as Box };
+export { MotionPaper as Paper };
