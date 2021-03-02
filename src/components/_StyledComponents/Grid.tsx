@@ -18,7 +18,12 @@ const StyledGridFooter = styled(Grid)`
   background-color: var(--color-black-lighter);
 `;
 
+const StyledGridRelative = styled(Grid)`
+  position: relative;
+`;
+
 export {
+  StyledGridRelative,
   StyledWrapperLarge,
   StyledWrapperGiant,
   StyledGridFooter,

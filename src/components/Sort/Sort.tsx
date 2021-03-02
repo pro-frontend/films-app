@@ -8,46 +8,11 @@ import {
 import React from "react";
 import styled from "styled-components";
 
-// const Sort = () => {
-//   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-//   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-//   return (
-//     <section>
-//       <StyledSpan>SORT BY</StyledSpan>
-//       <StyledButton
-//         aria-controls="simple-menu"
-//         aria-haspopup="true"
-//         onClick={handleClick}
-//       >
-//         Select
-//       </StyledButton>
-//       <Menu
-//         id="simple-menu"
-//         anchorEl={anchorEl}
-//         keepMounted
-//         open={Boolean(anchorEl)}
-//         onClose={handleClose}
-//       >
-//         <MenuItem onClick={handleClose}>RELEASE DATE</MenuItem>
-//         <MenuItem onClick={handleClose}>POPULARITY</MenuItem>
-//         <MenuItem onClick={handleClose}>RATING</MenuItem>
-//       </Menu>
-//     </section>
-//   );
-// };
-
-const options = ["SORT BY", "RELEASE DATE", "POPULARITY", "RATING"];
-
 const Sort = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const options = ["SORT BY", "RELEASE DATE", "POPULARITY", "RATING"];
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

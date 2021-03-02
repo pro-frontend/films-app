@@ -1,13 +1,12 @@
-// import
 import React from "react";
 import styled from "styled-components";
 import { Logo } from "../Logo";
-import { StyledGridFooter } from "../_StyledComponents";
+import { GridFooter } from "../_StyledComponents";
 
 const Footer = () => (
-  <StyledGridFooter container alignItems="center" justify="center">
+  <GridFooter container alignItems="center" justify="center">
     <Logo />
-  </StyledGridFooter>
+  </GridFooter>
 );
 
 const StyledFooter = styled(Footer)`
