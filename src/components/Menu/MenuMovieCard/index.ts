@@ -1,0 +1,1 @@
+export { MenuMovieCard } from "./MenuMovieCard";

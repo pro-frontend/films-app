@@ -1,13 +1,6 @@
 import React, { ReactElement } from "react";
-import { IAppRootProps } from "./AppRoot.types";
+import Home from "../../pages/Home";
 
-const AppRoot = ({
-  title = "Hello",
-  children,
-}: IAppRootProps): ReactElement => (
-  <h1>
-    {title}. You are here! <p>{children}</p>
-  </h1>
-);
+const AppRoot = (): ReactElement => <Home />;
 
 export default AppRoot;
