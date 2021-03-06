@@ -33,6 +33,7 @@ const SearchMovieButton = () => {
 };
 
 const StyledButton = styled(Button)`
+  position: relative;
   button {
     background-color: var(--color-accent) !important;
   }

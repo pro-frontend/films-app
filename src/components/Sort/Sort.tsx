@@ -1,77 +1,56 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
-import React from "react";
-import styled from "styled-components";
+import { CardContent, Grid } from "@material-ui/core";
+import React, { useCallback, useState } from "react";
+import { Button, Link } from "../Button";
+import { Card, GridRelative, Paragraph } from "../_StyledComponents";
+
+const options = [
+  "RELEASE DATE Up",
+  "RELEASE DATE Down",
+  "POPULARITY Up",
+  "POPULARITY Down",
+  "RATING Up",
+  "RATING Down",
+];
 
 const Sort = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  const options = ["SORT BY", "RELEASE DATE", "POPULARITY", "RATING"];
-
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const memoizedClick = useCallback(
+    (index) => {
+      if (index) {
+        setSelectedIndex(index);
+      }
+      console.log(selectedIndex, index);
+      setShowMenu(!showMenu);
+    },
+    [showMenu, selectedIndex]
+  );
 
   return (
-    <>
-      <List component="nav" aria-label="Device settings">
-        <ListItem
-          button
-          aria-haspopup="true"
-          aria-controls="lock-menu"
-          aria-label="when device is locked"
-          onClick={handleClickListItem}
-        >
-          <StyledListItemText
-            primary="SORT BY"
-            secondary={options[selectedIndex]}
-          />
-        </ListItem>
-      </List>
-      <Menu
-        id="lock-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        {options.map((option, index) => (
-          <MenuItem
-            key={option}
-            disabled={index === 0}
-            selected={index === selectedIndex}
-            onClick={(event) => handleMenuItemClick(event, index)}
-          >
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
-    </>
+    <GridRelative>
+      <Button onClick={memoizedClick}>
+        <Grid container alignItems="flex-end" direction="column">
+          <Paragraph>Sort by:</Paragraph>
+          <Paragraph color="var(--color-white)">
+            {options[selectedIndex]}
+          </Paragraph>
+        </Grid>
+      </Button>
+
+      {showMenu ? (
+        <Card>
+          <CardContent>
+            {options.map((option, index) => (
+              <Link key={option} onClick={() => memoizedClick(index)}>
+                {option}
+              </Link>
+            ))}
+          </CardContent>
+        </Card>
+      ) : null}
+    </GridRelative>
   );
 };
-
-const StyledListItemText = styled(ListItemText)`
-  p.MuiTypography-displayBlock {
-    color: var(--color-accent);
-  }
-`;
 
 export { Sort };

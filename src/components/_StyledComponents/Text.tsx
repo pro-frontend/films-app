@@ -7,7 +7,11 @@ const StyledSpan = styled.span`
 
 const StyledParagraph = styled.p`
   color: var(--color-accent);
-  font-weight: bold;
+  ${({ color }) =>
+    color &&
+    `
+    color: ${color};
+  `};
 `;
 
 export { StyledSpan, StyledParagraph };

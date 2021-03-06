@@ -1,4 +1,3 @@
-// import { IMenuMovieCardProps } from "./MenuMovieCard.types";
 import { CardContent } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import React, { useCallback, useState } from "react";

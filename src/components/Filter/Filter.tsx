@@ -11,7 +11,7 @@ const Filter = () => {
   return (
     <Tabs value={value} onChange={handleChange} aria-label="movies genres">
       {genres.map((genre) => (
-        <Tab label={genre} />
+        <Tab key={genre} label={genre} />
       ))}
     </Tabs>
   );

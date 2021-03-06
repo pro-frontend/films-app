@@ -16,9 +16,7 @@ const Home = () => (
         <Filter />
         <Sort />
       </WrapperGiant>
-      <WrapperGiant container>
-        <p>39 movies found</p>
-      </WrapperGiant>
+      <p style={{ textAlign: "center" }}>39 movies found</p>
       <MoviesList />
     </WrapperLarge>
     <Footer />
