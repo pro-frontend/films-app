@@ -21,7 +21,7 @@ const MovieCard = ({
       onMouseEnter={toggleShowMenu}
       onMouseLeave={toggleShowMenu}
       item
-      xs={4}
+      xs={3}
     >
       {showMenu ? <MenuMovieCard id={id} /> : null}
       <Paper>

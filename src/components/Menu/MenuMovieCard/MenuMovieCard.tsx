@@ -29,14 +29,14 @@ const MenuMovieCard = ({ id }: IMenuMovieCardProps) => {
   return (
     <>
       <MenuMovieCardButton
-        aria-controls="simple-menu"
+        aria-controls="movie-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
         <MoreVertIcon />
       </MenuMovieCardButton>
       <Menu
-        id="simple-menu"
+        id="movie-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
