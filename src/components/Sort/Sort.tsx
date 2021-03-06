@@ -1,4 +1,4 @@
-import { CardContent, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React, { useCallback, useState } from "react";
 import { Button, Link } from "../Button";
 import { Card, GridRelative, Paragraph } from "../_StyledComponents";
@@ -14,39 +14,37 @@ const options = [
 
 const Sort = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [selectedOption, setSelectedOption] = useState<string>(
+    "RELEASE DATE Up"
+  );
 
-  const memoizedClick = useCallback(
-    (index) => {
-      if (index) {
-        setSelectedIndex(index);
+  const sortSwitch = useCallback(
+    (option) => {
+      if (option) {
+        setSelectedOption(option);
       }
-      console.log(selectedIndex, index);
+      console.log(selectedOption, option);
       setShowMenu(!showMenu);
     },
-    [showMenu, selectedIndex]
+    [showMenu, selectedOption]
   );
 
   return (
     <GridRelative>
-      <Button onClick={memoizedClick}>
+      <Button onClick={() => sortSwitch(options[0])}>
         <Grid container alignItems="flex-end" direction="column">
           <Paragraph>Sort by:</Paragraph>
-          <Paragraph color="var(--color-white)">
-            {options[selectedIndex]}
-          </Paragraph>
+          <Paragraph color="var(--color-white)">{selectedOption}</Paragraph>
         </Grid>
       </Button>
 
       {showMenu ? (
         <Card>
-          <CardContent>
-            {options.map((option, index) => (
-              <Link key={option} onClick={() => memoizedClick(index)}>
-                {option}
-              </Link>
-            ))}
-          </CardContent>
+          {options.map((option) => (
+            <Link key={option} onClick={() => sortSwitch(option)}>
+              {option}
+            </Link>
+          ))}
         </Card>
       ) : null}
     </GridRelative>

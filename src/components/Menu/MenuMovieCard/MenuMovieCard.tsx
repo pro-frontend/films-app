@@ -9,18 +9,18 @@ import { MenuMovieCardButton } from "./MenuMovieCardButton";
 const MenuMovieCard = ({ id }: IMenuMovieCardProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
-  const memoizedClick = useCallback(() => {
+  const sortSwitch = useCallback(() => {
     setShowMenu(!showMenu);
   }, [showMenu]);
 
   const handleEdit = () => {
     console.log(`Edit film with id: ${id}`);
-    memoizedClick();
+    sortSwitch();
   };
 
   const handleDelete = () => {
     console.log(`Delete film with id: ${id}`);
-    memoizedClick();
+    sortSwitch();
   };
 
   return (
@@ -28,7 +28,7 @@ const MenuMovieCard = ({ id }: IMenuMovieCardProps) => {
       <MenuMovieCardButton
         aria-controls="movie-menu"
         aria-haspopup="true"
-        onClick={memoizedClick}
+        onClick={sortSwitch}
       >
         <MoreVertIcon />
       </MenuMovieCardButton>
