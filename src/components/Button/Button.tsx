@@ -41,4 +41,12 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export { AddMovieButton, SearchMovieButton, StyledButton };
+const StyledLink = styled.a`
+  display: block;
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+export { AddMovieButton, SearchMovieButton, StyledButton, StyledLink };
