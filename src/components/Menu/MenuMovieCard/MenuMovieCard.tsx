@@ -1,50 +1,46 @@
-// import { IMenuMovieCardProps } from "./MenuMovieCard.types";
-import { Menu, MenuItem } from "@material-ui/core";
+import { CardContent } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { Link } from "../../Button";
+import { Card } from "../../_StyledComponents";
 import { IMenuMovieCardProps } from "./MenuMovieCard.types";
 import { MenuMovieCardButton } from "./MenuMovieCardButton";
 
 const MenuMovieCard = ({ id }: IMenuMovieCardProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const sortSwitch = useCallback(() => {
+    setShowMenu(!showMenu);
+  }, [showMenu]);
 
   const handleEdit = () => {
     console.log(`Edit film with id: ${id}`);
-    handleClose();
+    sortSwitch();
   };
 
   const handleDelete = () => {
     console.log(`Delete film with id: ${id}`);
-    handleClose();
+    sortSwitch();
   };
 
   return (
     <>
       <MenuMovieCardButton
-        aria-controls="simple-menu"
+        aria-controls="movie-menu"
         aria-haspopup="true"
-        onClick={handleClick}
+        onClick={sortSwitch}
       >
         <MoreVertIcon />
       </MenuMovieCardButton>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleEdit}>Edit</MenuItem>
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
-      </Menu>
+
+      {showMenu ? (
+        <Card>
+          <CardContent>
+            <Link onClick={handleEdit}>Edit</Link>
+            <Link onClick={handleDelete}>Delete</Link>
+          </CardContent>
+        </Card>
+      ) : null}
     </>
   );
 };

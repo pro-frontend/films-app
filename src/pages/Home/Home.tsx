@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import React from "react";
 import { Filter } from "../../components/Filter";
 import { Footer } from "../../components/Footer";
@@ -17,9 +16,7 @@ const Home = () => (
         <Filter />
         <Sort />
       </WrapperGiant>
-      <Grid container>
-        <p>39 movies found</p>
-      </Grid>
+      <p style={{ textAlign: "center" }}>39 movies found</p>
       <MoviesList />
     </WrapperLarge>
     <Footer />

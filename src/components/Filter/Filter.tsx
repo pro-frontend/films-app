@@ -1,5 +1,6 @@
 import { Tab, Tabs } from "@material-ui/core";
 import React from "react";
+import { genres } from "../../utils/mockData";
 
 const Filter = () => {
   const [value, setValue] = React.useState(0);
@@ -8,19 +9,11 @@ const Filter = () => {
     setValue(newValue);
   };
   return (
-    <>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        aria-label="simple tabs example"
-      >
-        <Tab label="ALL" />
-        <Tab label="DOCUMENTARY" />
-        <Tab label="COMEDY" />
-        <Tab label="HORROR" />
-        <Tab label="CRIME" />
-      </Tabs>
-    </>
+    <Tabs value={value} onChange={handleChange} aria-label="movies genres">
+      {genres.map((genre) => (
+        <Tab key={genre} label={genre} />
+      ))}
+    </Tabs>
   );
 };
 

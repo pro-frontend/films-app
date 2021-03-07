@@ -7,36 +7,47 @@ import styled from "styled-components";
 const AddMovieButton = () => {
   function handleClick() {}
   return (
-    <Button
+    <StyledButton
       onClick={handleClick}
       variant="contained"
       color="primary"
       startIcon={<AddIcon />}
     >
       ADD MOVIE
-    </Button>
+    </StyledButton>
   );
 };
 
 const SearchMovieButton = () => {
   function handleClick() {}
   return (
-    <Button
+    <StyledButton
       onClick={handleClick}
       variant="contained"
       color="primary"
       startIcon={<SearchIcon />}
     >
       SEARCH
-    </Button>
+    </StyledButton>
   );
 };
 
 const StyledButton = styled(Button)`
-  * {
-    color: var(--color-white);
-    background-color: var(--color-accent);
+  position: relative;
+  button {
+    background-color: var(--color-accent) !important;
+  }
+  span.MuiButton-label {
+    color: var(--color-white) !important;
   }
 `;
 
-export { AddMovieButton, SearchMovieButton, StyledButton };
+const StyledLink = styled.a`
+  display: block;
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+export { AddMovieButton, SearchMovieButton, StyledButton, StyledLink };
