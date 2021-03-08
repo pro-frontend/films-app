@@ -3,6 +3,7 @@ import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import styled from "styled-components";
+import { color } from "../../common";
 
 const AddMovieButton = () => {
   function handleClick() {}
@@ -35,17 +36,17 @@ const SearchMovieButton = () => {
 const StyledButton = styled(Button)`
   position: relative;
   button {
-    background-color: var(--color-accent) !important;
+    background-color: ${color.accent} !important;
   }
   span.MuiButton-label {
-    color: var(--color-white) !important;
+    color: ${color.white} !important;
   }
 `;
 
 const StyledLink = styled.a`
   display: block;
   text-decoration: none;
-  color: var(--color-accent);
+  color: ${color.accent};
   font-weight: bold;
   cursor: pointer;
 `;

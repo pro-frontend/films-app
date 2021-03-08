@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import React, { useCallback, useState } from "react";
+import { color } from "../../common";
 import { Button, Link } from "../Button";
 import { Card, GridRelative, Paragraph } from "../_StyledComponents";
 
@@ -34,7 +35,7 @@ const Sort = () => {
       <Button onClick={() => sortSwitch(options[0])}>
         <Grid container alignItems="flex-end" direction="column">
           <Paragraph>Sort by:</Paragraph>
-          <Paragraph color="var(--color-white)">{selectedOption}</Paragraph>
+          <Paragraph color={color.white}>{selectedOption}</Paragraph>
         </Grid>
       </Button>
 

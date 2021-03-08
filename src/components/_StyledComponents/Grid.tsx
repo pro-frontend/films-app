@@ -1,21 +1,22 @@
 import { Grid } from "@material-ui/core";
 import styled from "styled-components";
+import { color, margins } from "../../common";
 
 const StyledWrapperSmall = styled(Grid)`
-  padding: var(--margins-small);
+  padding: ${margins.small};
 `;
 
 const StyledWrapperLarge = styled(Grid)`
-  padding: var(--margins-large);
+  padding: ${margins.large};
 `;
 
 const StyledWrapperGiant = styled(Grid)`
-  padding: var(--margins-large) var(--margins-giant);
+  padding: ${margins.large} ${margins.giant};
 `;
 
 const StyledGridFooter = styled(Grid)`
-  padding: var(--margins-large);
-  background-color: var(--color-black-lighter);
+  padding: ${margins.large};
+  background-color: ${color.blackLighter};
 `;
 
 const StyledGridRelative = styled(Grid)`
