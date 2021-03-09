@@ -20,6 +20,9 @@ const Home = () => (
       <MoviesList />
     </WrapperLarge>
     <Footer />
+    {/* <Modal filmId={0} active={true} mode="CREATE" /> */}
+    {/* <Modal filmId={0} active={true} mode="EDIT" /> */}
+    {/* <Modal filmId={0} active={true} mode="DELETE" /> */}
   </>
 );
-export default Home;
+export { Home };
