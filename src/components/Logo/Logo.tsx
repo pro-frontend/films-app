@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { color, margins } from "../../common";
 
 const Logo = () => (
   <StyledSpan href="/">
@@ -8,8 +9,8 @@ const Logo = () => (
 );
 
 const StyledSpan = styled.a`
-  color: var(--color-accent);
-  font-size: var(--margins-large);
+  color: ${color.accent};
+  font-size: ${margins.large};
   text-decoration: none;
 `;
 

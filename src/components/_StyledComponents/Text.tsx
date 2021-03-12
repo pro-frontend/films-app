@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { color } from "../../common";
 
 const StyledSpan = styled.span`
-  color: var(--color-accent);
+  color: ${color.accent};
   font-weight: bold;
 `;
 
 const StyledParagraph = styled.p`
-  color: var(--color-accent);
+  color: ${color.accent};
   ${({ color }) =>
     color &&
     `

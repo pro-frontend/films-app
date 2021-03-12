@@ -1,5 +1,6 @@
 import { Input, InputProps } from "@material-ui/core";
 import styled from "styled-components";
+import { color, fontSize, margins } from "../../../common";
 
 const StyledInput = (props: InputProps) => {
   const handleChange = () => {};
@@ -10,11 +11,11 @@ const StyledInput = (props: InputProps) => {
 const StyledInputIntermediate = styled(Input)`
   input {
     min-width: max-content;
-    color: var(--color-white);
-    background-color: var(--color-black-lighter);
+    color: ${color.white};
+    background-color: ${color.blackLighter};
     backdrop-filter: opacity(20%) blur(2px);
-    font-size: var(--font-size-large);
-    padding: var(--margins-small) var(--margins-medium);
+    font-size: ${fontSize.large};
+    padding: ${margins.small} ${margins.normal};
     text-align: center;
   }
 `;
