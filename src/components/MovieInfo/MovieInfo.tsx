@@ -1,9 +1,17 @@
 import { Container, Grid } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { movieDetailsById } from "../../utils/mockData";
+import { ImovieDetails } from "../../utils/mockData/movieDetailsById.types";
 import { Chip, Image, Paragraph, WrapperLarge } from "../_StyledComponents";
 
 const MovieInfo = () => {
+  const [movieDetails, setMovieDetails] = useState<ImovieDetails>(
+    movieDetailsById
+  );
+
+  useEffect(() => setMovieDetails(movieDetailsById), []);
+
   const handleReturnToHome = useCallback(() => {
     window.location.replace("/");
   }, []);
@@ -17,25 +25,32 @@ const MovieInfo = () => {
         <WrapperLarge container spacing={3}>
           <Grid item xs={3}>
             <Image
-              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qth9hOnQctaJbyzmAau4DZaUyUG.jpg"
-              alt=""
+              // src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qth9hOnQctaJbyzmAau4DZaUyUG.jpg"
+              src={`https://www.themoviedb.org/3${movieDetails.backdrop_path}`}
+              alt={`${movieDetails.original_title} logo`}
             />
           </Grid>
           <Grid item xs={9}>
-            <Paragraph>Fight Club,</Paragraph>
+            <Paragraph>{movieDetails.original_title},</Paragraph>
             <Paragraph>
-              {"1999-10-12".slice(0, 4)}
-              <Chip margins="10px" marginLeft="30px" label="139 min" />
+              {movieDetails.release_date.slice(0, 4)}
+              <Chip
+                margins="10px"
+                marginLeft="30px"
+                label={`${movieDetails.runtime} min`}
+              />
             </Paragraph>
-            <Chip marginLeft="0" margins="10px" color="secondary" label="7.8" />
-            <Chip margins="10px" color="primary" label="Drama" />
-            <Paragraph>
-              A ticking-time-bomb insomniac and a slippery soap salesman channel
-              primal male aggression into a shocking new form of therapy. Their
-              concept catches on, with underground "fight clubs" forming in
-              every town, until an eccentric gets in the way and ignites an
-              out-of-control spiral toward oblivion.
-            </Paragraph>
+            <Chip
+              marginLeft="0"
+              margins="10px"
+              color="secondary"
+              label={movieDetails.vote_average}
+            />
+            {movieDetails.genres.map(({ name }) => (
+              <Chip margins="10px" color="primary" label={name} />
+            ))}
+
+            <Paragraph>{movieDetails.overview}</Paragraph>
           </Grid>
         </WrapperLarge>
       </Container>
