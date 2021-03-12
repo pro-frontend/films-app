@@ -6,13 +6,18 @@ const StyledSpan = styled.span`
   font-weight: bold;
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.p<{
+  color?: string;
+  align?: "left" | "center" | "right";
+}>`
   color: ${color.accent};
   ${({ color }) =>
     color &&
     `
     color: ${color};
   `};
+
+  ${({ align }) => align && `text-align: ${align}`};
 `;
 
 export { StyledSpan, StyledParagraph };

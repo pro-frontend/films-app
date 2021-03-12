@@ -1,4 +1,5 @@
 export { StyledCard as Card } from "./Card";
+export { StyledChip as Chip } from "./Chip";
 export { StyledInput as Input } from "./Containers/Input";
 export {
   StyledGridFooter as GridFooter,

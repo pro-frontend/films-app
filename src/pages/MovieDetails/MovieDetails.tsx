@@ -1,25 +1,15 @@
 import React from "react";
-import { Filter } from "../../components/Filter";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
+import { MovieInfo } from "../../components/MovieInfo";
 import { MoviesList } from "../../components/MoviesList";
-import SearchPanel from "../../components/SearchPanel";
-import { Sort } from "../../components/Sort";
-import {
-  Paragraph,
-  WrapperGiant,
-  WrapperLarge,
-} from "../../components/_StyledComponents";
+import { Paragraph, WrapperLarge } from "../../components/_StyledComponents";
 
-const Home = () => (
+const MovieDetails = () => (
   <>
     <WrapperLarge className="content_minus_footer_height">
       <Header />
-      <SearchPanel />
-      <WrapperGiant container justify="space-between" alignItems="center">
-        <Filter />
-        <Sort />
-      </WrapperGiant>
+      <MovieInfo />
       <Paragraph align="center">39 movies found</Paragraph>
       <MoviesList />
     </WrapperLarge>
@@ -29,4 +19,4 @@ const Home = () => (
     {/* <Modal filmId={0} active={true} mode="DELETE" /> */}
   </>
 );
-export { Home };
+export { MovieDetails };
