@@ -1,15 +1,20 @@
 import { BASE } from "../../common";
 
 class Requests {
-  handleResponse = (res: Response) =>
+  private handleResponse = (res: Response) =>
     !res.ok ? Promise.reject(res) : res.json();
 
-  handleFetch = async (url: string, params: object) => {
+  private handleFetch = async (url: string, params: object) => {
     const data = await fetch(`${BASE}${url}`, params)
       .then((res) => {
         this.handleResponse(res);
       })
-      .catch((err) => console.warn(`Error fetching data from ${url}`));
+      .catch((err) =>
+        console.warn(`
+        Error fetching data from ${url};
+        Got this error: ${err}.
+      `)
+      );
 
     return data;
   };
@@ -41,7 +46,7 @@ class Requests {
 
     return this.handleFetch(url, params);
   };
-  deleteRequest = async (url: string, body: object) => {
+  deleteRequest = async (url: string, body?: object) => {
     const params = {
       method: "DELETE",
       body: JSON.stringify({
