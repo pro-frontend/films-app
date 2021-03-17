@@ -1,42 +1,61 @@
-import { API_KEY, BASE_API } from "../../common";
+import { BASE } from "../../common";
 
 class Requests {
-  async getRequest(endpoint: string): Promise<Record<string, number | string>> {
-    let response = await fetch(`${BASE_API}${endpoint}?${API_KEY}`).then((e) =>
-      e.json()
-    );
-    return response;
-  }
-  async postRequest(
-    endpoint: string,
-    body: object
-  ): Promise<Record<string, number | string>> {
-    let response = await fetch(
-      `${BASE_API}${endpoint}?${API_KEY}`,
-      body
-    ).then((e) => e.json());
-    return response;
-  }
-  async putRequest(
-    endpoint: string,
-    body: object
-  ): Promise<Record<string, number | string>> {
-    let response = await fetch(
-      `${BASE_API}${endpoint}?${API_KEY}`,
-      body
-    ).then((e) => e.json());
-    return response;
-  }
-  async deleteRequest(
-    endpoint: string,
-    body: object
-  ): Promise<Record<string, number | string>> {
-    let response = await fetch(
-      `${BASE_API}${endpoint}?${API_KEY}`,
-      body
-    ).then((e) => e.json());
-    return response;
-  }
+  private handleResponse = (res: Response) =>
+    !res.ok ? Promise.reject(res) : res.json();
+
+  private handleFetch = async (url: string, params: object) => {
+    const data = await fetch(`${BASE}${url}`, params)
+      .then((res) => {
+        this.handleResponse(res);
+      })
+      .catch((err) =>
+        console.warn(`
+        Error fetching data from ${url};
+        Got this error: ${err}.
+      `)
+      );
+
+    return data;
+  };
+
+  getRequest = async (url: string) => {
+    const params = {
+      method: "GET",
+    };
+
+    return this.handleFetch(url, params);
+  };
+
+  postRequest = async (url: string, body?: object) => {
+    const params = {
+      method: "POST",
+      body: JSON.stringify(body),
+    };
+
+    return this.handleFetch(url, params);
+  };
+
+  putRequest = async (url: string, body: object) => {
+    const params = {
+      method: "PUT",
+      body: JSON.stringify({
+        ...body,
+      }),
+    };
+
+    return this.handleFetch(url, params);
+  };
+  deleteRequest = async (url: string, body?: object) => {
+    const params = {
+      method: "DELETE",
+      body: JSON.stringify({
+        ...body,
+      }),
+    };
+
+    return this.handleFetch(url, params);
+  };
 }
 
 const Request = new Requests();

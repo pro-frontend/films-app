@@ -1,5 +1,16 @@
 import { Request } from "./Requests";
 
-export const Api = {
-  getMovies: Request.getRequest("/discover/movie"),
+export const {
+  getMoviesList,
+  getMovieById,
+  addMovie,
+  updateMovie,
+  deleteMovie,
+} = {
+  getMoviesList: Request.getRequest("/movies"),
+  addMovie: (body: object) => Request.postRequest("/movies", body),
+  updateMovie: (id: number, body: object) =>
+    Request.putRequest(`/movies/${id}`, body),
+  getMovieById: (id: number) => Request.getRequest(`/movies/${id}`),
+  deleteMovie: (id: number) => Request.deleteRequest(`/movies/${id}`),
 };

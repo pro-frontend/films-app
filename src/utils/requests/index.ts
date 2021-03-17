@@ -1,2 +1,8 @@
-export { Api } from "./Api";
+export {
+  addMovie,
+  deleteMovie,
+  getMovieById,
+  getMoviesList,
+  updateMovie,
+} from "./Api";
 export { Request } from "./Requests";
