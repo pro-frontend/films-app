@@ -1,12 +1,17 @@
 import { Container } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { ImovieItem, movies, Tmovies } from "../../utils/mockData";
+import { getMoviesList } from "../../utils/requests";
 import { WrapperLarge } from "../_StyledComponents";
 import { MovieCard } from "./MovieCard";
 
 const MoviesList = () => {
   const [moviesData, setMoviesData] = useState<Tmovies>([]);
-  useEffect(() => setMoviesData(movies), []);
+  useEffect(() => {
+    setMoviesData(movies);
+    getMoviesList.then((res) => console.log(res));
+  }, []);
+
   return (
     <Container maxWidth="lg">
       <WrapperLarge container spacing={6}>
