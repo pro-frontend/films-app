@@ -4,13 +4,12 @@ import React from "react";
 import { Paper } from "../../_StyledComponents";
 import { IModalHeaderProps } from "../Modal.types";
 
-const ModalHeader = ({ headerTitle }: IModalHeaderProps) => {
-  const handleClose = () => {};
+const ModalHeader = ({ headerTitle, onModalClose }: IModalHeaderProps) => {
   return (
     <Paper square variant="outlined">
       <Grid container justify="space-between">
         <p>{headerTitle}</p>
-        <CloseIcon onClick={handleClose} />
+        <CloseIcon onClick={onModalClose} />
       </Grid>
     </Paper>
   );
