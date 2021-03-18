@@ -2,9 +2,9 @@ export interface IModalProps {
   active: boolean;
   mode: Tmode;
   filmId: number;
-  onModalClose: () => void | undefined;
-  onModalSubmit: () => void | undefined;
-  onModalReset: () => void | undefined;
+  onModalClose: () => void;
+  onModalSubmit: () => void;
+  onModalReset: () => void;
 }
 
 export interface IModalHeaderProps {

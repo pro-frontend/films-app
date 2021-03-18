@@ -3,9 +3,9 @@ import { ModalBody, ModalFooter, ModalHeader } from ".";
 import { ModalGrid, ModalPaper } from "../_StyledComponents";
 import { IModalProps, Tmode } from "./Modal.types";
 import {
-  onDefaultModalClose,
-  onDefaultModalReset,
-  onDefaultModalSubmit,
+  useOnDefaultModalClose,
+  useOnDefaultModalReset,
+  useOnDefaultModalSubmit,
 } from "./Modal.utils";
 
 const Modal = memo(
@@ -13,9 +13,9 @@ const Modal = memo(
     active,
     mode = Tmode.CREATE,
     filmId = 999_999_999,
-    onModalClose = onDefaultModalClose,
-    onModalSubmit = onDefaultModalSubmit,
-    onModalReset = onDefaultModalReset,
+    onModalClose = useOnDefaultModalClose,
+    onModalSubmit = useOnDefaultModalSubmit,
+    onModalReset = useOnDefaultModalReset,
   }: IModalProps) => {
     const [headerTitle, setHeaderTitle] = useState("");
 
@@ -38,12 +38,7 @@ const Modal = memo(
     return active ? (
       <ModalGrid container justify="center" alignItems="center">
         <ModalPaper variant="outlined">
-          <ModalHeader
-            onModalClose={() =>
-              onModalClose ? onModalClose() : onDefaultModalClose()
-            }
-            headerTitle={headerTitle}
-          />
+          <ModalHeader onModalClose={onModalClose} headerTitle={headerTitle} />
           <ModalBody mode={mode} />
           <ModalFooter
             onModalSubmit={onModalSubmit}
