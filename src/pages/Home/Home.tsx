@@ -2,6 +2,8 @@ import React from "react";
 import { Filter } from "../../components/Filter";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
+import { Modal } from "../../components/Modal";
+import { Tmode } from "../../components/Modal/Modal.types";
 import { MoviesList } from "../../components/MoviesList";
 import SearchPanel from "../../components/SearchPanel";
 import { Sort } from "../../components/Sort";
@@ -24,9 +26,9 @@ const Home = () => (
       <MoviesList />
     </WrapperLarge>
     <Footer />
-    {/* <Modal filmId={0} active={true} mode="CREATE" /> */}
-    {/* <Modal filmId={0} active={true} mode="EDIT" /> */}
-    {/* <Modal filmId={0} active={true} mode="DELETE" /> */}
+    <Modal filmId={0} active={false} mode={Tmode.CREATE} />
+    <Modal filmId={0} active={false} mode={Tmode.EDIT} />
+    <Modal filmId={0} active={false} mode={Tmode.DELETE} />
   </>
 );
 export { Home };

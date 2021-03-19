@@ -96,7 +96,9 @@
     "format:all": "prettier --write .",
     "test": "node scripts/test.js",
     "test:y": "yarn updateSnapshots",
-    "updateSnapshots": "jest --updateSnapshot"
+    "updateSnapshots": "jest --updateSnapshot",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -174,6 +176,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.1.21",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-knobs": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/styled-components": "^5.1.7",

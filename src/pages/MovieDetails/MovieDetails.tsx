@@ -1,6 +1,8 @@
 import React from "react";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
+import { Modal } from "../../components/Modal";
+import { Tmode } from "../../components/Modal/Modal.types";
 import { MovieInfo } from "../../components/MovieInfo";
 import { MoviesList } from "../../components/MoviesList";
 import { Paragraph, WrapperLarge } from "../../components/_StyledComponents";
@@ -14,9 +16,9 @@ const MovieDetails = () => (
       <MoviesList />
     </WrapperLarge>
     <Footer />
-    {/* <Modal filmId={0} active={true} mode="CREATE" /> */}
-    {/* <Modal filmId={0} active={true} mode="EDIT" /> */}
-    {/* <Modal filmId={0} active={true} mode="DELETE" /> */}
+    <Modal filmId={0} active={false} mode={Tmode.CREATE} />
+    <Modal filmId={0} active={false} mode={Tmode.EDIT} />
+    <Modal filmId={0} active={false} mode={Tmode.DELETE} />
   </>
 );
 export { MovieDetails };

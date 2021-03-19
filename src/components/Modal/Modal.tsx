@@ -1,47 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { ModalBody, ModalFooter, ModalHeader } from ".";
 import { ModalGrid, ModalPaper } from "../_StyledComponents";
-import { IModalProps } from "./Modal.types";
+import { IModalProps, Tmode } from "./Modal.types";
+import {
+  useOnDefaultModalClose,
+  useOnDefaultModalReset,
+  useOnDefaultModalSubmit,
+} from "./Modal.utils";
 
-const Modal = ({
-  active = false,
-  mode = "CREATE",
-  filmId = 0,
-}: IModalProps) => {
-  const [headerTitle, setHeaderTitle] = useState("");
+const Modal = memo(
+  ({
+    active,
+    mode = Tmode.CREATE,
+    filmId = 999_999_999,
+    onModalClose = useOnDefaultModalClose,
+    onModalSubmit = useOnDefaultModalSubmit,
+    onModalReset = useOnDefaultModalReset,
+  }: IModalProps) => {
+    const [headerTitle, setHeaderTitle] = useState("");
 
-  useEffect(() => {
-    const headerConfig = {
-      CREATE: {
-        title: "ADD MOVIE",
-      },
-      EDIT: {
-        title: "EDIT MOVIE",
-      },
-      DELETE: {
-        title: "DELETE MOVIE",
-      },
-    };
+    useEffect(() => {
+      const headerConfig = {
+        CREATE: {
+          title: "ADD MOVIE",
+        },
+        EDIT: {
+          title: "EDIT MOVIE",
+        },
+        DELETE: {
+          title: "DELETE MOVIE",
+        },
+      };
 
-    setHeaderTitle(headerConfig[mode].title);
-  }, [mode]);
+      setHeaderTitle(headerConfig[mode].title);
+    }, [mode]);
 
-  const handleClose = () => {};
-
-  return active ? (
-    <ModalGrid
-      onClick={handleClose}
-      container
-      justify="center"
-      alignItems="center"
-    >
-      <ModalPaper variant="outlined">
-        <ModalHeader headerTitle={headerTitle} />
-        <ModalBody mode={mode} />
-        <ModalFooter mode={mode} />
-      </ModalPaper>
-    </ModalGrid>
-  ) : null;
-};
+    return active ? (
+      <ModalGrid container justify="center" alignItems="center">
+        <ModalPaper variant="outlined">
+          <ModalHeader onModalClose={onModalClose} headerTitle={headerTitle} />
+          <ModalBody mode={mode} />
+          <ModalFooter
+            onModalSubmit={onModalSubmit}
+            onModalReset={onModalReset}
+            filmId={filmId}
+            mode={mode}
+          />
+        </ModalPaper>
+      </ModalGrid>
+    ) : null;
+  }
+);
 
 export { Modal };
