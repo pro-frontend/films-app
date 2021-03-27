@@ -2,9 +2,9 @@ export interface IModalProps {
   active: boolean;
   mode: Tmode;
   filmId: number;
-  onModalClose: () => void;
-  onModalSubmit: () => void;
-  onModalReset: () => void;
+  onModalClose?: () => void;
+  onModalSubmit?: () => void;
+  onModalReset?: () => void;
 }
 
 export interface IModalHeaderProps {
