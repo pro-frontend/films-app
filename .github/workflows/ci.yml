@@ -16,10 +16,12 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: run jest --coverage # will run `yarn run jest` command
-      - name: Jest Coverage Comment Action
+      - name: Jest Coverage Commenter
         # You may pin to the exact commit or the version.
-        # uses: raulanatol/jest-coverage-comment-action@405faec91fb03b4f45cd535c94a3ca1aded4db6b
-        uses: raulanatol/jest-coverage-comment-action@v1.0.1
+        # uses: dkershner6/jest-coverage-commenter-action@58ed25dae88c7231f0d29779a58d976acbf02941
+        uses: dkershner6/jest-coverage-commenter-action@v1
         with:
-          jest-command: # optional, default is npx jest --coverage
-            run jest --coverage
+          test_command: # optional, default is npx jest --coverage
+            "jest --coverage"
+          reporter: 
+            "HoneyWood Reporter"
