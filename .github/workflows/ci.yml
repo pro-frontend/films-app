@@ -22,4 +22,4 @@ jobs:
         uses: raulanatol/jest-coverage-comment-action@v1.0.1
         with:
           jest-command: # optional, default is npx jest --coverage
-            run jest --coverage
+            jest --coverage
