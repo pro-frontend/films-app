@@ -5,13 +5,21 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: Installation
       - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: build # will run `yarn build` command
+          cmd: test # will run `yarn test` command
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: test # will run `yarn test` command
+          cmd: run jest --coverage # will run `yarn run jest` command
+      - name: Jest Coverage Comment Action
+        # You may pin to the exact commit or the version.
+        # uses: raulanatol/jest-coverage-comment-action@405faec91fb03b4f45cd535c94a3ca1aded4db6b
+        uses: raulanatol/jest-coverage-comment-action@v1.0.1
+        with:
+          jest-command: # optional, default is npx jest --coverage
+            run jest --coverage
