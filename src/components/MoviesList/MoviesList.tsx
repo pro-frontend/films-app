@@ -17,14 +17,14 @@ const MoviesList = () => {
       <WrapperLarge container spacing={6}>
         {moviesData ? (
           moviesData.map(
-            ({ id, name, description, urlImage, date }: ImovieItem) => (
+            ({ id, title, tagline, poster_path, release_date }: ImovieItem) => (
               <MovieCard
                 key={id}
                 id={id}
-                name={name}
-                description={description}
-                urlImage={urlImage}
-                date={date}
+                title={title}
+                tagline={tagline}
+                poster_path={poster_path}
+                release_date={release_date}
               />
             )
           )
