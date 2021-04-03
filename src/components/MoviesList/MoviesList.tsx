@@ -7,6 +7,7 @@ import { MovieCard } from "./MovieCard";
 
 const MoviesList = () => {
   const [moviesData, setMoviesData] = useState<Tmovies>([]);
+
   useEffect(() => {
     setMoviesData(movies);
     getMoviesList.then((res) => console.log(res));

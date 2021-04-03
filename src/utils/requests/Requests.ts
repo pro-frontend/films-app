@@ -4,7 +4,7 @@ class Requests {
   private handleResponse = (res: Response) =>
     !res.ok ? Promise.reject(res) : res.json();
 
-  private handleFetch = async (url: string, params: object) => {
+  private handleFetch = async (url: string, params: object): Promise<any> => {
     const data = await fetch(`${BASE}${url}`, params)
       .then((res) => {
         this.handleResponse(res);
@@ -24,7 +24,7 @@ class Requests {
       method: "GET",
     };
 
-    return this.handleFetch(url, params);
+    return await this.handleFetch(url, params);
   };
 
   postRequest = async (url: string, body?: object) => {
