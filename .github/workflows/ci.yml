@@ -2,17 +2,11 @@ name: CI
 on: [push]
 jobs:
   build:
-    name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Installation
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install # will run `yarn install` command
-      - run: yarn install
-      - name: Testing
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: test # will run `yarn test` command
-      - run: yarn test
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
+    - name: Run tests
+      run: yarn test
+
