@@ -20,6 +20,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/yup": "^0.29.11",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "babel-eslint": "^10.1.0",
@@ -44,6 +45,7 @@
     "eslint-plugin-testing-library": "^3.9.2",
     "eslint-webpack-plugin": "^2.5.2",
     "file-loader": "6.1.1",
+    "formik": "^2.2.6",
     "framer-motion": "^3.7.0",
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "4.5.0",
@@ -86,7 +88,8 @@
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "workbox-webpack-plugin": "5.1.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -186,6 +189,7 @@
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/recoil": "^0.0.1",
+    "@types/recoilize": "^0.8.0",
     "@types/styled-components": "^5.1.7",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "cz-conventional-changelog": "3.3.0",
@@ -197,7 +201,8 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0"
+    "pretty-quick": "^3.1.0",
+    "recoilize": "^1.0.0"
   },
   "config": {
     "commitizen": {

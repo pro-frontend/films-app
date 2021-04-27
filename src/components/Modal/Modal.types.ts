@@ -15,6 +15,16 @@ export interface IModalHeaderProps {
 export interface IModalBodyProps {
   mode: Tmode;
 }
+
+export interface IModalBodyForm {
+  title: string;
+  releaseDate: string;
+  movieUrl: string;
+  genre: string;
+  overView: string;
+  runTime: string;
+}
+
 export interface IModalFooterProps {
   mode: Tmode;
   filmId: number;

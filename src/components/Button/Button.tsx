@@ -2,11 +2,20 @@ import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { color } from "../../common";
+import { modalActiveAtom, modalModeAtom } from "../../store/modal/atoms";
+import { Tmode } from "../Modal/Modal.types";
 
 const AddMovieButton = () => {
-  function handleClick() {}
+  const [, setModalActive] = useRecoilState(modalActiveAtom);
+  const [, setModalMode] = useRecoilState(modalModeAtom);
+
+  const handleClick = () => {
+    setModalActive(true);
+    setModalMode(Tmode.CREATE);
+  };
   return (
     <StyledButton
       onClick={handleClick}

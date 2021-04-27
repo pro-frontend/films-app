@@ -1,6 +1,8 @@
 import { Grid } from "@material-ui/core";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { color } from "../../common";
+import { selectedSortAtom } from "../../store/movies/atoms";
 import { Button, Link } from "../Button";
 import { Card, GridRelative, Paragraph } from "../_StyledComponents";
 
@@ -19,16 +21,22 @@ const Sort = () => {
     "RELEASE DATE Up"
   );
 
+  const [, setSelectedSort] = useRecoilState<string>(selectedSortAtom);
+
   const sortSwitch = useCallback(
     (option) => {
-      if (option) {
+      if (showMenu) {
         setSelectedOption(option);
       }
-      console.log(selectedOption, option);
+
       setShowMenu(!showMenu);
     },
-    [showMenu, selectedOption]
+    [showMenu]
   );
+
+  useEffect(() => {
+    setSelectedSort(selectedOption);
+  }, [selectedOption, setSelectedSort]);
 
   return (
     <GridRelative>

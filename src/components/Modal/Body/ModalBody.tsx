@@ -6,17 +6,52 @@ import {
   Select,
   TextField,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import React, { useCallback, useEffect, useState } from "react";
+import * as yup from "yup";
 import { genres } from "../../../utils/mockData/";
+import { addMovie } from "../../../utils/requests";
 import { Paper, Paragraph } from "../../_StyledComponents";
-import { IModalBodyProps, Tmode } from "../Modal.types";
+import { IModalBodyForm, IModalBodyProps, Tmode } from "../Modal.types";
 
 const BodyCreate = () => {
   const [genre, setGenre] = useState(genres[0]);
 
-  const handleChange = (currentGenre: string) => {
+  const handleGenreChange = useCallback((currentGenre: string) => {
     setGenre(currentGenre);
-  };
+  }, []);
+
+  const validationSchema = yup.object({
+    title: yup
+      .string()
+      .min(3, "Must be at least 3 characters")
+      .max(15, "Must be 15 characters or less")
+      .required(),
+    releaseDate: yup.string().required(),
+    movieUrl: yup.string().required(),
+    genre: yup.string().required(),
+    overView: yup.string().required(),
+    runTime: yup.string().required(),
+  });
+
+  const formik = useFormik<IModalBodyForm>({
+    initialValues: {
+      title: "",
+      releaseDate: "",
+      movieUrl: "",
+      genre: "",
+      overView: "",
+      runTime: "",
+    },
+    validateOnChange: true,
+    validationSchema,
+    onSubmit: (values) => {
+      const res = JSON.stringify(formik.handleSubmit, null, 2);
+      console.log(res);
+      addMovie(values);
+    },
+  });
+
   return (
     <Grid container direction="column">
       <TextField label="TITLE" />
@@ -27,7 +62,7 @@ const BodyCreate = () => {
         <Select value={genre}>
           {genres.map((genre) => (
             <MenuItem
-              onClick={() => handleChange(genre)}
+              onClick={() => handleGenreChange(genre)}
               value={genre}
               key={genre}
             >
@@ -48,6 +83,38 @@ const BodyEdit = () => {
   const handleChange = (currentGenre: string) => {
     setGenre(currentGenre);
   };
+
+  const validationSchema = yup.object({
+    title: yup
+      .string()
+      .min(3, "Must be at least 3 characters")
+      .max(15, "Must be 15 characters or less")
+      .required(),
+    releaseDate: yup.string().required(),
+    movieUrl: yup.string().required(),
+    genre: yup.string().required(),
+    overView: yup.string().required(),
+    runTime: yup.string().required(),
+  });
+
+  const formik = useFormik<IModalBodyForm>({
+    initialValues: {
+      title: "",
+      releaseDate: "",
+      movieUrl: "",
+      genre: "",
+      overView: "",
+      runTime: "",
+    },
+    validateOnChange: true,
+    validationSchema,
+    onSubmit: (values) => {
+      const res = JSON.stringify(formik.handleSubmit, null, 2);
+      console.log(res);
+      addMovie(values);
+    },
+  });
+
   return (
     <Grid container direction="column">
       <TextField label="MOVIE ID" disabled />
@@ -88,7 +155,7 @@ const CurrentBody = (mode: Tmode) => {
 };
 
 const ModalBody = ({ mode }: IModalBodyProps) => {
-  const [body, setBody] = useState(<p></p>);
+  const [body, setBody] = useState(<p />);
 
   useEffect(() => {
     setBody(CurrentBody(mode));

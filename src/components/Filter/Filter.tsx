@@ -1,17 +1,29 @@
 import { Tab, Tabs } from "@material-ui/core";
-import React, { useState } from "react";
-import { genres } from "../../utils/mockData";
+import React, { useCallback, useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { moviesListAtom, selectedFilterAtom } from "../../store/movies/atoms";
+import { genres, Tmovies } from "../../utils/mockData";
+import { getMoviesList } from "../../utils/requests";
 
 const Filter = () => {
-  const [genre, setGenre] = useState(0);
+  const [genre, setGenre] = useRecoilState<number>(selectedFilterAtom);
+  const setMoviesData = useSetRecoilState<Tmovies>(moviesListAtom);
 
-  const handleChange = (currentGenre: number) => {
-    setGenre(currentGenre);
-  };
+  const changeGenre = useCallback(
+    (currentGenre: number) => {
+      setGenre(currentGenre);
+    },
+    [setGenre]
+  );
+
+  useEffect(() => {
+    getMoviesList.then((res) => setMoviesData(res));
+  }, [genre, setMoviesData]);
+
   return (
     <Tabs value={genre} aria-label="movies genres">
       {genres.map((genre, id) => (
-        <Tab key={genre} label={genre} onClick={() => handleChange(id)} />
+        <Tab key={genre} label={genre} onClick={() => changeGenre(id)} />
       ))}
     </Tabs>
   );

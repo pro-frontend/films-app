@@ -1,10 +1,14 @@
 import { Tgenres } from "./genres.types";
 
 export const genres: Tgenres = [
-  "ALL",
-  "DOCUMENTARY",
-  "COMEDY",
-  "HORROR",
-  "CRIME",
-  "FANTASY",
+  "All",
+  "Action",
+  "Adventure",
+  "Animation",
+  "Comedy",
+  "Drama",
+  "Family",
+  "Fantasy",
+  "Romance",
+  "Science Fiction",
 ];

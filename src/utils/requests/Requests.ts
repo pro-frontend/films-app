@@ -4,10 +4,10 @@ class Requests {
   private handleResponse = (res: Response) =>
     !res.ok ? Promise.reject(res) : res.json();
 
-  private handleFetch = async (url: string, params: object): Promise<any> => {
+  private handleFetch = async (url: string, params: object) => {
     const data = await fetch(`${BASE}${url}`, params)
       .then((res) => {
-        this.handleResponse(res);
+        return this.handleResponse(res);
       })
       .catch((err) =>
         console.warn(`
