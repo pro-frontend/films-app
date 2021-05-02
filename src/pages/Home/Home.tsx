@@ -1,34 +1,44 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useRecoilState } from "recoil";
 import { Filter } from "../../components/Filter";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
 import { Modal } from "../../components/Modal";
-import { Tmode } from "../../components/Modal/Modal.types";
 import { MoviesList } from "../../components/MoviesList";
 import SearchPanel from "../../components/SearchPanel";
 import { Sort } from "../../components/Sort";
-import {
-  Paragraph,
-  WrapperGiant,
-  WrapperLarge,
-} from "../../components/_StyledComponents";
+import { WrapperGiant, WrapperLarge } from "../../components/_StyledComponents";
+import { modalActiveAtom, modalModeAtom } from "../../store/modal/atoms";
+import { selectedMovieIdAtom } from "../../store/movies/atoms";
 
-const Home = () => (
-  <>
-    <WrapperLarge className="content_minus_footer_height">
-      <Header />
-      <SearchPanel />
-      <WrapperGiant container justify="space-between" alignItems="center">
-        <Filter />
-        <Sort />
-      </WrapperGiant>
-      <Paragraph align="center">39 movies found</Paragraph>
-      <MoviesList />
-    </WrapperLarge>
-    <Footer />
-    <Modal filmId={0} active={false} mode={Tmode.CREATE} />
-    <Modal filmId={0} active={false} mode={Tmode.EDIT} />
-    <Modal filmId={0} active={false} mode={Tmode.DELETE} />
-  </>
-);
+const Home = () => {
+  const [movieId] = useRecoilState(selectedMovieIdAtom);
+  const [modalActive, setModalActive] = useRecoilState(modalActiveAtom);
+  const [modalMode] = useRecoilState(modalModeAtom);
+
+  const onModalClose = useCallback(() => {
+    setModalActive(false);
+  }, [setModalActive]);
+
+  return (
+    <>
+      <WrapperLarge className="content_minus_footer_height">
+        <Header />
+        <SearchPanel />
+        <WrapperGiant container justify="space-between" alignItems="center">
+          <Filter />
+          <Sort />
+        </WrapperGiant>
+        <MoviesList />
+      </WrapperLarge>
+      <Footer />
+      <Modal
+        filmId={movieId}
+        active={modalActive}
+        mode={modalMode}
+        onModalClose={onModalClose}
+      />
+    </>
+  );
+};
 export { Home };

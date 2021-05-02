@@ -1,7 +1,7 @@
 export interface IMovieCardProps {
   id: number;
-  name: string;
-  description: string;
-  urlImage: string;
-  date: string;
+  title: string;
+  tagline: string;
+  poster_path: string;
+  release_date: string;
 }

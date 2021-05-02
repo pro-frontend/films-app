@@ -1,30 +1,42 @@
 import { Container } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import { ImovieItem, movies, Tmovies } from "../../utils/mockData";
+import React, { useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { recoilFilmsSelector } from "../../store";
+import {
+  moviesListAtom,
+  selectedFilterAtom,
+  selectedSortAtom,
+} from "../../store/movies/atoms";
+import { ImovieItem, Tmovies } from "../../utils/mockData";
 import { getMoviesList } from "../../utils/requests";
 import { WrapperLarge } from "../_StyledComponents";
 import { MovieCard } from "./MovieCard";
 
 const MoviesList = () => {
-  const [moviesData, setMoviesData] = useState<Tmovies>([]);
+  const selectedFilter = useRecoilValue(selectedFilterAtom);
+  const selectedSort = useRecoilValue(selectedSortAtom);
+  const [, setMoviesData] = useRecoilState<Tmovies>(moviesListAtom);
+  const currentMoviesData = useRecoilValue<Tmovies>(recoilFilmsSelector);
+
   useEffect(() => {
-    setMoviesData(movies);
-    getMoviesList.then((res) => console.log(res));
-  }, []);
+    getMoviesList.then((res) => setMoviesData(res));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFilter, selectedSort]);
 
   return (
     <Container maxWidth="lg">
       <WrapperLarge container spacing={6}>
-        {moviesData ? (
-          moviesData.map(
-            ({ id, name, description, urlImage, date }: ImovieItem) => (
+        {Boolean(currentMoviesData) ? (
+          currentMoviesData.map(
+            ({ id, title, tagline, poster_path, release_date }: ImovieItem) => (
               <MovieCard
                 key={id}
                 id={id}
-                name={name}
-                description={description}
-                urlImage={urlImage}
-                date={date}
+                title={title}
+                tagline={tagline}
+                poster_path={poster_path}
+                release_date={release_date}
               />
             )
           )

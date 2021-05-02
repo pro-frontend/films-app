@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
+import { addMovie, deleteMovie, updateMovie } from "../../utils/requests";
 
 export const ModalResetButton = () => {
   return (
@@ -8,21 +9,41 @@ export const ModalResetButton = () => {
     </Button>
   );
 };
-export const ModalCreateConfirmButton = () => {
+export const ModalCreateConfirmButton = ({ body }: any) => {
+  useEffect(() => {
+    return () => {
+      addMovie(body);
+    };
+  });
+
   return (
     <Button variant="contained" color="secondary">
       SUBMIT
     </Button>
   );
 };
-export const ModalEditConfirmButton = () => {
+
+export const ModalEditConfirmButton = ({ id, body }: any) => {
+  useEffect(() => {
+    return () => {
+      updateMovie(id, body);
+    };
+  });
+
   return (
     <Button variant="contained" color="secondary">
       SAVE
     </Button>
   );
 };
-export const ModalRemoveConfirmButton = () => {
+
+export const ModalRemoveConfirmButton = ({ id }: { id: number }) => {
+  useEffect(() => {
+    return () => {
+      deleteMovie(id);
+    };
+  });
+
   return (
     <Button variant="contained" color="secondary">
       CONFIRM

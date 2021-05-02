@@ -7,7 +7,7 @@ class Requests {
   private handleFetch = async (url: string, params: object) => {
     const data = await fetch(`${BASE}${url}`, params)
       .then((res) => {
-        this.handleResponse(res);
+        return this.handleResponse(res);
       })
       .catch((err) =>
         console.warn(`
@@ -24,7 +24,7 @@ class Requests {
       method: "GET",
     };
 
-    return this.handleFetch(url, params);
+    return await this.handleFetch(url, params);
   };
 
   postRequest = async (url: string, body?: object) => {

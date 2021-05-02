@@ -47,7 +47,7 @@ const MovieInfo = () => {
               label={movieDetails.vote_average}
             />
             {movieDetails.genres.map(({ name }) => (
-              <Chip margins="10px" color="primary" label={name} />
+              <Chip key={name} margins="10px" color="primary" label={name} />
             ))}
 
             <Paragraph>{movieDetails.overview}</Paragraph>

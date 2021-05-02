@@ -1,8 +1,6 @@
 import React, { ReactElement } from "react";
-// import { Home, MovieDetails } from "../../pages";
-import { MovieDetails } from "../../pages";
+import { Home } from "../../pages";
 
-// const AppRoot = (): ReactElement => <Home />;
-const AppRoot = (): ReactElement => <MovieDetails />;
+const AppRoot = (): ReactElement => <Home />;
 
 export default AppRoot;

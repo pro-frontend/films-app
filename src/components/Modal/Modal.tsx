@@ -33,6 +33,7 @@ const Modal = memo(
       };
 
       setHeaderTitle(headerConfig[mode].title);
+      // eslint-disable-next-line
     }, [mode]);
 
     return active ? (

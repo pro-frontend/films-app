@@ -1,13 +1,15 @@
-import { Chip } from "@material-ui/core";
+import { Chip, ChipProps } from "@material-ui/core";
 import styled from "styled-components";
 
-const StyledChip = styled(Chip)<{
+interface IStyledChip extends ChipProps {
   margins?: string;
   marginTop?: string;
   marginRight?: string;
   marginBottom?: string;
   marginLeft?: string;
-}>`
+}
+
+const StyledChip = styled(Chip)<IStyledChip>`
   ${({ margins }) => margins && `margin: ${margins};`};
 
   ${({ marginTop }) => marginTop && `margin-top: ${marginTop};`};

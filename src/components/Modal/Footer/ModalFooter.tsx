@@ -1,27 +1,35 @@
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { selectedMovieIdAtom } from "../../../store/movies/atoms";
 import {
   ModalCreateConfirmButton,
   ModalEditConfirmButton,
   ModalRemoveConfirmButton,
-  ModalResetButton,
 } from "../../Button";
 import { Paper } from "../../_StyledComponents";
 import { IModalFooterProps, Tmode } from "../Modal.types";
 
 const FooterCreate = () => (
   <Grid container justify="space-between">
-    <ModalResetButton />
     <ModalCreateConfirmButton />
   </Grid>
 );
-const FooterEdit = () => (
-  <Grid container justify="space-between">
-    <ModalResetButton />
-    <ModalEditConfirmButton />
-  </Grid>
-);
-const FooterRemove = () => <ModalRemoveConfirmButton />;
+
+const FooterEdit = () => {
+  const [selectedMovieId] = useRecoilState(selectedMovieIdAtom);
+
+  return (
+    <Grid container justify="space-between">
+      <ModalEditConfirmButton id={selectedMovieId} />
+    </Grid>
+  );
+};
+const FooterRemove = () => {
+  const [selectedMovieId] = useRecoilState(selectedMovieIdAtom);
+
+  return <ModalRemoveConfirmButton id={selectedMovieId} />;
+};
 
 const CurrentFooter = (mode: Tmode) => {
   const footer = {

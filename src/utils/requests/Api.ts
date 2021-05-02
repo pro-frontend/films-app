@@ -1,16 +1,17 @@
+import { Tmovies } from "../mockData";
 import { Request } from "./Requests";
 
-export const {
-  getMoviesList,
-  getMovieById,
-  addMovie,
-  updateMovie,
-  deleteMovie,
-} = {
-  getMoviesList: Request.getRequest("/movies"),
-  addMovie: (body: object) => Request.postRequest("/movies", body),
-  updateMovie: (id: number, body: object) =>
-    Request.putRequest(`/movies/${id}`, body),
-  getMovieById: (id: number) => Request.getRequest(`/movies/${id}`),
-  deleteMovie: (id: number) => Request.deleteRequest(`/movies/${id}`),
-};
+const getMoviesList: Promise<Tmovies> = Request.getRequest("/movies").then(
+  (res) => res.data
+);
+
+const addMovie = (body: object) => Request.postRequest("/movies", body);
+
+const updateMovie = (id: number, body: object) =>
+  Request.putRequest(`/movies/${id}`, body);
+
+const getMovieById = (id: number) => Request.getRequest(`/movies/${id}`);
+
+const deleteMovie = (id: number) => Request.deleteRequest(`/movies/${id}`);
+
+export { getMoviesList, addMovie, updateMovie, getMovieById, deleteMovie };
