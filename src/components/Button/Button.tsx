@@ -29,7 +29,11 @@ const AddMovieButton = () => {
 };
 
 const SearchMovieButton = () => {
+  /*
+    TODO: When click to search button -> get query and replace into `moviesListAtom`.
+  */
   function handleClick() {}
+
   return (
     <StyledButton
       onClick={handleClick}

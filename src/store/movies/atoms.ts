@@ -6,6 +6,11 @@ export const moviesListAtom = atom<Tmovies>({
   default: [],
 });
 
+export const searchMoviesInputAtom = atom<string>({
+  key: "searchMoviesInput",
+  default: "",
+});
+
 export const selectedMovieIdAtom = atom({
   key: "selectedMovieId",
   default: 999_999_999,
