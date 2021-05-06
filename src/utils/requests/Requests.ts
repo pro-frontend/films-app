@@ -12,7 +12,7 @@ class Requests {
       .catch((err) =>
         console.warn(`
         Error fetching data from ${url};
-        Got this error: ${err}.
+        Got this error: ${err instanceof Object ? JSON.stringify(err) : err}.
       `)
       );
 

@@ -9,13 +9,17 @@ const StyledInput = (props: InputProps) => {
 };
 
 const StyledInputIntermediate = styled(Input)`
+  & {
+    position: relative;
+  }
+
   input {
     min-width: max-content;
     color: ${color.white};
     background-color: ${color.blackLighter};
     backdrop-filter: opacity(20%) blur(2px);
     font-size: ${fontSize.large};
-    padding: ${margins.small} ${margins.normal};
+    padding: ${margins.small} ${margins.giant};
     text-align: center;
   }
 `;

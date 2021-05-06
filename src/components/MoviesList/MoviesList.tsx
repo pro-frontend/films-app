@@ -20,14 +20,12 @@ const MoviesList = () => {
 
   useEffect(() => {
     getMoviesList.then((res) => setMoviesData(res));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilter, selectedSort]);
+  }, [selectedFilter, selectedSort, setMoviesData]);
 
   return (
     <Container maxWidth="lg">
       <WrapperLarge container spacing={6}>
-        {Boolean(currentMoviesData) ? (
+        {Boolean(currentMoviesData && currentMoviesData.length) ? (
           currentMoviesData.map(
             ({ id, title, tagline, poster_path, release_date }: ImovieItem) => (
               <MovieCard
@@ -41,7 +39,9 @@ const MoviesList = () => {
             )
           )
         ) : (
-          <h2>No films have found here.</h2>
+          <h2 style={{ textAlign: "center", width: "100%" }}>
+            No films have found here.
+          </h2>
         )}
       </WrapperLarge>
     </Container>
