@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MockRecoilRoot /> should mount MockRecoilRoot 1`] = `
+<MockRecoilRoot>
+  <RecoilRoot>
+    <Batcher
+      setNotifyBatcherOfChange={[Function]}
+    />
+  </RecoilRoot>
+</MockRecoilRoot>
+`;

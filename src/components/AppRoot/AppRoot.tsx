@@ -1,21 +1,22 @@
-import React, { ReactElement } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { Home, InvalidUrl } from "../../pages";
-import { selectedMovieIdAtom } from "../../store/movies/atoms";
+import React, { StrictMode } from "react";
+import { RecoilRoot } from "recoil";
+import RecoilizeDebugger from "recoilize";
+import { atomNodes } from "../../store";
+import "../../styles/index.scss";
+import ErrorBoundary from "../ErrorBoundary";
+import { AppRouter } from "../Routes";
 
-const AppRoot = (): ReactElement => {
-  const [id] = useRecoilState(selectedMovieIdAtom);
+const rootComponent = document.getElementById("root");
 
-  return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path={`/${id}`} exact component={Home} />
-        <Route path="*" component={InvalidUrl} />
-      </Switch>
-    </Router>
-  );
-};
+const AppRoot = () => (
+  <StrictMode>
+    <ErrorBoundary>
+      <RecoilRoot>
+        <RecoilizeDebugger nodes={atomNodes} root={rootComponent} />
+        <AppRouter />
+      </RecoilRoot>
+    </ErrorBoundary>
+  </StrictMode>
+);
 
-export default AppRoot;
+export { AppRoot, rootComponent };

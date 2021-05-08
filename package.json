@@ -100,7 +100,9 @@
     "format:staged": "pretty-quick \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --staged",
     "format:all": "prettier --write .",
     "test": "node scripts/test.js",
-    "test:y": "yarn updateSnapshots",
+    "test:w": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:u": "yarn updateSnapshots",
     "updateSnapshots": "jest --updateSnapshot",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
