@@ -101,6 +101,7 @@
     "format:all": "prettier --write .",
     "test": "node scripts/test.js",
     "test:y": "yarn updateSnapshots",
+    "test:w": "jest --coverage --watch",
     "updateSnapshots": "jest --updateSnapshot",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
