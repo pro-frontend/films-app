@@ -1,2 +1,1 @@
-import AppRoot from "./AppRoot";
-export default AppRoot;
+export { AppRoot, rootComponent } from "./AppRoot";

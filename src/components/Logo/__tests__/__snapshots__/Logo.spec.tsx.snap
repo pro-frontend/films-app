@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppRoot /> should mount AppRoot 1`] = `
+<Logo>
+  <styled.a
+    href="/"
+  >
+    <a
+      className="sc-bdfBwQ ctDQYu"
+      href="/"
+    >
+      <b>
+        netflix
+      </b>
+       roulette
+    </a>
+  </styled.a>
+</Logo>
+`;
+
+exports[`<AppRoot /> should mount AppRoot 2`] = `
+<styled.a>
+  <a
+    className="sc-bdfBwQ ctDQYu"
+  />
+</styled.a>
+`;

@@ -14,4 +14,4 @@ const StyledSpan = styled.a`
   text-decoration: none;
 `;
 
-export { Logo };
+export { Logo, StyledSpan };
